@@ -19,3 +19,6 @@
   }
   .nav-links.open { display: flex; }
 }
+@media (max-width: 720px) {
+  .topic-sidebar-wrap { display: none; }
+}

@@ -29,7 +29,9 @@ export default function TopicPage() {
   const s = t.sections
 
   return (
-    <article style={{ flex: 1, minWidth: 0 }}>
+    <div style={{ display: 'flex', gap: 24, alignItems: 'flex-start' }}>
+      <div className="topic-sidebar-wrap"><TopicSidebar category={category} currentId={t.id} /></div>
+      <article style={{ flex: 1, minWidth: 0 }}>
       <div style={{ color: 'var(--text-mute)', fontSize: 12 }}>
         <Link to="/">首页</Link> / <Link to={`/${category}`}>{t.category === 'candlestick' ? 'K线基础' : '技术指标'}</Link>
       </div>
@@ -78,5 +80,6 @@ export default function TopicPage() {
         </div>
       )}
     </article>
+    </div>
   )
 }

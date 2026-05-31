@@ -31,7 +31,8 @@ describe('TopicPage', () => {
   it('渲染延伸阅读链接', () => {
     renderAt('/candlestick/bullish-engulfing')
     expect(screen.getByText(/延伸阅读/)).toBeInTheDocument()
-    expect(screen.getByText('看跌吞没')).toBeInTheDocument()
+    // 看跌吞没 可能出现在侧栏和延伸阅读中，用 getAllByText
+    expect(screen.getAllByText('看跌吞没').length).toBeGreaterThanOrEqual(1)
   })
   it('未知条目显示未找到', () => {
     renderAt('/candlestick/nope')

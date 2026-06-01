@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { layoutCandles } from './geometry.js'
+import { layoutCandles, scaleY } from './geometry.js'
 
 const UP = '#f43f5e'
 const DOWN = '#22c55e'
@@ -15,6 +15,9 @@ export default function CandleChart({
   const pad = 12
   const laid = layoutCandles(data, { width, height, pad })
   const slot = width / data.length
+  const prices = data.flatMap((d) => [d.h, d.l])
+  const min = Math.min(...prices)
+  const max = Math.max(...prices)
 
   return (
     <svg viewBox={`0 0 ${width} ${height}`} width="100%" style={{ display: 'block' }}>
@@ -44,6 +47,32 @@ export default function CandleChart({
               />
               {a.label && (
                 <text x={(x1 + x2) / 2} y={height - 2} fill="#fbbf24" fontSize="11" textAnchor="middle">
+                  {a.label}
+                </text>
+              )}
+            </g>
+          )
+        })}
+
+      {/* 水平参考线（颈线/支撑/压力） */}
+      {annotations
+        .filter((a) => a.type === 'line')
+        .map((a, i) => {
+          const y = scaleY(a.price, { min, max, height, pad })
+          return (
+            <g key={`line-${i}`}>
+              <line
+                data-role="hline"
+                x1="0"
+                y1={y}
+                x2={width}
+                y2={y}
+                stroke="#fbbf24"
+                strokeWidth="1.2"
+                strokeDasharray="5 3"
+              />
+              {a.label && (
+                <text x={width - 4} y={y - 4} fill="#fbbf24" fontSize="11" textAnchor="end">
                   {a.label}
                 </text>
               )}

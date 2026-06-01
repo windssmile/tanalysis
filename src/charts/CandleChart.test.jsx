@@ -27,4 +27,11 @@ describe('CandleChart', () => {
     )
     expect(container.querySelector('rect[data-role="box"]')).toBeTruthy()
   })
+  it('渲染水平参考线标注', () => {
+    const { getByText, container } = render(
+      <CandleChart data={data} annotations={[{ type: 'line', price: 11, label: '颈线' }]} />
+    )
+    expect(container.querySelector('line[data-role="hline"]')).toBeTruthy()
+    expect(getByText('颈线')).toBeTruthy()
+  })
 })

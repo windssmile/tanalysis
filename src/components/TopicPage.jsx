@@ -59,6 +59,15 @@ export default function TopicPage() {
         <SectionTitle>使用提示</SectionTitle>
         <Bullets items={s.usage} />
 
+        {Array.isArray(s.quant) && s.quant.length > 0 && (
+          <div style={{ background: 'var(--primary-soft)', border: '1px solid var(--border-strong)', borderRadius: 'var(--radius-sm)', padding: '10px 14px', margin: '4px 0 16px' }}>
+            <div style={{ color: 'var(--primary-text)', fontSize: 13, fontWeight: 700, marginBottom: 4 }}>📐 <span>量化视角</span></div>
+            <ul style={{ margin: 0, paddingLeft: 18, color: '#cbd5e1', lineHeight: 1.8 }}>
+              {s.quant.map((x, i) => <li key={i}>{x}</li>)}
+            </ul>
+          </div>
+        )}
+
         <div style={{ background: 'rgba(244,63,94,0.08)', borderLeft: '3px solid var(--warn)', borderRadius: '0 6px 6px 0', padding: '10px 14px', marginTop: 8 }}>
           <div style={{ color: '#f87a8a', fontSize: 13, fontWeight: 700 }}>⚠ <span>局限</span></div>
           <p style={{ color: '#cbd5e1', margin: '4px 0 0' }}>{s.limitation}</p>

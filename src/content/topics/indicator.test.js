@@ -19,4 +19,10 @@ describe('indicator topics', () => {
       expect(t.sections.limitation).toBeTruthy()
     }
   })
+  it('每个条目含 metrics(量化刻画) 数组', () => {
+    for (const t of indicatorTopics) {
+      expect(Array.isArray(t.sections.metrics)).toBe(true)
+      expect(t.sections.metrics.length).toBeGreaterThan(0)
+    }
+  })
 })

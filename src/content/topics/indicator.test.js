@@ -2,8 +2,8 @@ import { describe, it, expect } from 'vitest'
 import { indicatorTopics } from './indicator.js'
 
 describe('indicator topics', () => {
-  it('包含 3 个条目', () => {
-    expect(indicatorTopics).toHaveLength(3)
+  it('包含 5 个条目', () => {
+    expect(indicatorTopics).toHaveLength(5)
   })
   it('全部 category 为 indicator 且含 formula 字段', () => {
     for (const t of indicatorTopics) {

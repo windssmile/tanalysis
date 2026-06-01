@@ -5,17 +5,17 @@ import { hasChart } from '../charts/chartRegistry.js'
 import { getCategory } from './categories.js'
 
 describe('topics index', () => {
-  it('汇总 31 个条目', () => {
-    expect(allTopics).toHaveLength(31)
+  it('汇总 41 个条目', () => {
+    expect(allTopics).toHaveLength(41)
   })
   it('getTopic 按 id 返回，未知返回 undefined', () => {
     expect(getTopic('macd').title).toBe('MACD')
     expect(getTopic('nope')).toBeUndefined()
   })
   it('topicsByCategory 按板块过滤', () => {
-    expect(topicsByCategory('candlestick')).toHaveLength(6)
+    expect(topicsByCategory('candlestick')).toHaveLength(12)
     expect(topicsByCategory('indicator')).toHaveLength(8)
-    expect(topicsByCategory('pattern')).toHaveLength(4)
+    expect(topicsByCategory('pattern')).toHaveLength(8)
     expect(topicsByCategory('theory')).toHaveLength(4)
     expect(topicsByCategory('volume')).toHaveLength(4)
     expect(topicsByCategory('strategy')).toHaveLength(5)

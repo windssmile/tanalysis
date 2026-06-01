@@ -2,8 +2,8 @@ import { describe, it, expect } from 'vitest'
 import { patternTopics } from './pattern.js'
 
 describe('pattern topics', () => {
-  it('包含 4 个条目', () => {
-    expect(patternTopics).toHaveLength(4)
+  it('包含 8 个条目', () => {
+    expect(patternTopics).toHaveLength(8)
   })
   it('全部 category 为 pattern', () => {
     for (const t of patternTopics) expect(t.category).toBe('pattern')

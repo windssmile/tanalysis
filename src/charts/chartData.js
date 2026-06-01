@@ -269,6 +269,36 @@ export const chartData = {
     10.3, 10.28, 10.34, 10.26, 10.22, 10.3, 10.36, 10.32, 10.28, 10.33, 10.38, 10.35,
   ]),
 
+  // 假突破：放量突破压力后无法站稳，迅速跌回区间（多头陷阱）
+  'false-breakout': {
+    candles: fromPath([12, 12.5, 13, 13.7, 13.2, 12.6, 12.1, 11.6]),
+    annotations: [
+      { type: 'line', price: 13.1, label: '压力' },
+      { type: 'highlight', index: 3 },
+    ],
+  },
+  // 交易心理：追涨买在高点、恐慌割肉卖在低点（高亮两处错误决策）
+  'trading-psychology': {
+    candles: fromPath([10, 11, 12.5, 13.6, 13, 11.5, 10.4, 10, 11, 12.2]),
+    annotations: [
+      { type: 'highlight', index: 3 },
+      { type: 'highlight', index: 7 },
+    ],
+  },
+  // 回撤与破产风险：创出高点后深度回撤，展示亏损的不对称
+  'drawdown-ruin': {
+    candles: fromPath([12, 13, 14, 13.4, 11.8, 10.2, 9, 8.4]),
+    annotations: [
+      { type: 'line', price: 14, label: '峰值' },
+      { type: 'highlight', index: 7 },
+    ],
+  },
+  // A股特有风险：高位放量后连续暴跌/闪崩（庄股、暴雷情形）
+  'a-share-risks': {
+    candles: fromPath([15, 15.3, 15.1, 13.8, 12.4, 11, 9.9, 9.2]),
+    annotations: [{ type: 'box', from: 3, to: 7, label: '闪崩' }],
+  },
+
   // 盘口：买卖五档 + 委比/内外盘
   'order-book': {
     asks: [

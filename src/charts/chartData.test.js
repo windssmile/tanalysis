@@ -14,6 +14,7 @@ const ids = [
   'dark-cloud-cover', 'piercing-line', 'evening-star', 'harami',
   'shooting-star', 'hanging-man',
   'rectangle', 'flag-wedge', 'gap', 'v-reversal',
+  'false-breakout', 'trading-psychology', 'drawdown-ruin', 'a-share-risks',
 ]
 
 describe('chartData', () => {

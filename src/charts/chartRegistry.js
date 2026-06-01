@@ -68,6 +68,10 @@ const registry = {
   'intraday-avgline': { Component: IntradayChart, props: { data: chartData['intraday-avgline'] } },
   'intraday-auction': { Component: IntradayChart, props: { data: chartData['intraday-auction'] } },
   'order-book': { Component: OrderBookTable, props: { data: chartData['order-book'] } },
+  'false-breakout': candle('false-breakout'),
+  'trading-psychology': candle('trading-psychology'),
+  'drawdown-ruin': candle('drawdown-ruin'),
+  'a-share-risks': candle('a-share-risks'),
 }
 
 function priceVolume(id) {

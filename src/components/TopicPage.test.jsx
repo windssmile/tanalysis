@@ -44,6 +44,10 @@ describe('TopicPage', () => {
     renderAt('/candlestick/hammer')
     expect(screen.queryByText('何时会失效')).not.toBeInTheDocument()
   })
+  it('含 pitfalls 字段的条目渲染"何时会失效"', () => {
+    renderAt('/risk/false-breakout')
+    expect(screen.getByText('何时会失效')).toBeInTheDocument()
+  })
   it('渲染延伸阅读链接', () => {
     renderAt('/candlestick/bullish-engulfing')
     expect(screen.getByText(/延伸阅读/)).toBeInTheDocument()

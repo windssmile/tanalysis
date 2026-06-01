@@ -5,6 +5,7 @@ import { theoryTopics } from './theory.js'
 import { volumeTopics } from './volume.js'
 import { intradayTopics } from './intraday.js'
 import { strategyTopics } from './strategy.js'
+import { riskTopics } from './risk.js'
 
 export const allTopics = [
   ...candlestickTopics,
@@ -14,6 +15,7 @@ export const allTopics = [
   ...volumeTopics,
   ...intradayTopics,
   ...strategyTopics,
+  ...riskTopics,
 ]
 
 export function getTopic(id) {

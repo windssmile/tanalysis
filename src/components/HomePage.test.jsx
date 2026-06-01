@@ -4,7 +4,7 @@ import { MemoryRouter } from 'react-router-dom'
 import HomePage from './HomePage.jsx'
 
 describe('HomePage', () => {
-  it('渲染全部 7 个板块卡片', () => {
+  it('渲染全部 8 个板块卡片', () => {
     render(<MemoryRouter><HomePage /></MemoryRouter>)
     expect(screen.getByText('K线基础')).toBeInTheDocument()
     expect(screen.getByText('量价关系')).toBeInTheDocument()

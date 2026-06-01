@@ -2,11 +2,11 @@ import { describe, it, expect } from 'vitest'
 import { categories, getCategory, enabledCategories } from './categories.js'
 
 describe('categories', () => {
-  it('定义了全部 7 大板块', () => {
-    expect(categories).toHaveLength(7)
+  it('定义了全部 8 大板块', () => {
+    expect(categories).toHaveLength(8)
   })
-  it('六大板块全部启用', () => {
-    expect(enabledCategories().map((c) => c.id)).toEqual(['candlestick', 'indicator', 'pattern', 'theory', 'volume', 'intraday', 'strategy'])
+  it('八大板块全部启用', () => {
+    expect(enabledCategories().map((c) => c.id)).toEqual(['candlestick', 'indicator', 'pattern', 'theory', 'volume', 'intraday', 'strategy', 'risk'])
   })
   it('每个板块有 id/name/order/enabled 字段', () => {
     for (const c of categories) {

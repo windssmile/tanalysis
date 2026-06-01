@@ -6,6 +6,7 @@ export const categories = [
   { id: 'volume', name: '量价关系', icon: '📦', enabled: true, order: 5, desc: '量增价涨、放量突破、量价背离' },
   { id: 'intraday', name: '分时图分析', icon: '⏱️', enabled: true, order: 6, desc: '分时线、均价线、量价与盘口' },
   { id: 'strategy', name: '实战框架', icon: '🎯', enabled: true, order: 7, desc: '多指标组合成分析与交易体系' },
+  { id: 'risk', name: '风险管理', icon: '🛡️', enabled: true, order: 8, desc: '信号失效、心理偏差、回撤破产与A股特有风险' },
 ]
 
 export function getCategory(id) {

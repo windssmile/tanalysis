@@ -21,4 +21,11 @@ describe('theory topics', () => {
     expect(Array.isArray(t.sections.quant)).toBe(true)
     expect(t.sections.quant.length).toBeGreaterThan(0)
   })
+  it('趋势线/支撑压力/道氏理论含 metrics(量化刻画)', () => {
+    for (const id of ['trend-line', 'support-resistance', 'dow-theory']) {
+      const t = theoryTopics.find((x) => x.id === id)
+      expect(Array.isArray(t.sections.metrics)).toBe(true)
+      expect(t.sections.metrics.length).toBeGreaterThan(0)
+    }
+  })
 })

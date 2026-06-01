@@ -15,6 +15,7 @@ describe('volume topics', () => {
       expect(Array.isArray(t.sections.usage)).toBe(true)
       expect(t.sections.limitation).toBeTruthy()
       expect(Array.isArray(t.sections.quant)).toBe(true)
+      expect(Array.isArray(t.sections.metrics)).toBe(true)
     }
   })
 })

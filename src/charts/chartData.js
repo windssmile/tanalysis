@@ -54,6 +54,9 @@ export const chartData = {
   kdj: { candles: genTrend() },
   rsi: { candles: genTrend() },
   boll: { candles: genTrend() },
+  dmi: { candles: genTrend() },
+  bias: { candles: genTrend() },
+  obv: { candles: genTrendV() },
 
   // 双重底（W底）：两次探底于颈线下方，第二底不破前低后放量突破颈线
   'double-bottom': {
@@ -162,6 +165,14 @@ function genTrend() {
     price = c
   }
   return out
+}
+
+// 同 genTrend，但附带与波动幅度正相关的成交量，供 OBV / 筹码分布使用
+function genTrendV() {
+  return genTrend().map((d, i) => ({
+    ...d,
+    v: Math.round(80 + Math.abs(d.c - d.o) * 120 + (Math.sin(i / 3) + 1) * 40),
+  }))
 }
 
 function round(x) {

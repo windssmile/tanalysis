@@ -6,6 +6,9 @@ import MACDChart from './MACDChart.jsx'
 import KDJChart from './KDJChart.jsx'
 import RSIChart from './RSIChart.jsx'
 import BOLLChart from './BOLLChart.jsx'
+import DMIChart from './DMIChart.jsx'
+import OBVChart from './OBVChart.jsx'
+import BIASChart from './BIASChart.jsx'
 
 describe('指标图表', () => {
   it('MAChart 在 K线主图上叠加均线 polyline', () => {
@@ -30,5 +33,17 @@ describe('指标图表', () => {
     const { container } = render(<BOLLChart data={chartData.boll.candles} />)
     expect(container.querySelectorAll('polyline').length).toBe(3)
     expect(container.querySelectorAll('rect[data-role="body"]').length).toBeGreaterThan(0)
+  })
+  it('DMIChart 渲染 +DI/-DI/ADX 三条线', () => {
+    const { container } = render(<DMIChart data={chartData.dmi.candles} />)
+    expect(container.querySelectorAll('polyline').length).toBe(3)
+  })
+  it('OBVChart 渲染单条能量潮曲线', () => {
+    const { container } = render(<OBVChart data={chartData.obv.candles} />)
+    expect(container.querySelectorAll('polyline').length).toBe(1)
+  })
+  it('BIASChart 渲染 BIAS6/12/24 三条线', () => {
+    const { container } = render(<BIASChart data={chartData.bias.candles} />)
+    expect(container.querySelectorAll('polyline').length).toBe(3)
   })
 })

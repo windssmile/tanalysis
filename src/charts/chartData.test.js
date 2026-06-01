@@ -4,7 +4,7 @@ import { chartData } from './chartData.js'
 const ids = [
   'kline-basics', 'hammer', 'doji', 'bullish-engulfing',
   'bearish-engulfing', 'morning-star', 'ma', 'macd', 'kdj',
-  'rsi', 'boll',
+  'rsi', 'boll', 'dmi', 'bias', 'obv',
   'double-bottom', 'double-top', 'head-shoulders-top', 'ascending-triangle',
   'trend-line', 'support-resistance', 'dow-theory', 'quant-signals',
   'volume-price', 'volume-breakout', 'volume-divergence',

@@ -4,6 +4,9 @@ import MACDChart from './indicators/MACDChart.jsx'
 import KDJChart from './indicators/KDJChart.jsx'
 import RSIChart from './indicators/RSIChart.jsx'
 import BOLLChart from './indicators/BOLLChart.jsx'
+import DMIChart from './indicators/DMIChart.jsx'
+import OBVChart from './indicators/OBVChart.jsx'
+import BIASChart from './indicators/BIASChart.jsx'
 import PriceVolumeChart from './PriceVolumeChart.jsx'
 import { chartData } from './chartData.js'
 
@@ -20,6 +23,9 @@ const registry = {
   kdj: { Component: KDJChart, props: { data: chartData.kdj.candles } },
   rsi: { Component: RSIChart, props: { data: chartData.rsi.candles } },
   boll: { Component: BOLLChart, props: { data: chartData.boll.candles } },
+  dmi: { Component: DMIChart, props: { data: chartData.dmi.candles } },
+  obv: { Component: OBVChart, props: { data: chartData.obv.candles } },
+  bias: { Component: BIASChart, props: { data: chartData.bias.candles } },
   'double-bottom': candle('double-bottom'),
   'double-top': candle('double-top'),
   'head-shoulders-top': candle('head-shoulders-top'),

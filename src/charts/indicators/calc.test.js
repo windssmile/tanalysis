@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { sma, ema, macd, kdj } from './calc.js'
+import { sma, ema, macd, kdj, rsi, boll } from './calc.js'
 
 describe('指标计算', () => {
   it('sma 简单移动平均，前 n-1 个为 null', () => {
@@ -33,5 +33,32 @@ describe('指标计算', () => {
     const last = 29
     expect(k[last]).toBeGreaterThanOrEqual(0)
     expect(k[last]).toBeLessThanOrEqual(100)
+  })
+  it('rsi 前 period 个为 null，单调上涨序列为 100', () => {
+    const closes = [1, 2, 3, 4, 5, 6]
+    const out = rsi(closes, 3)
+    expect(out).toHaveLength(6)
+    expect(out.slice(0, 3)).toEqual([null, null, null])
+    expect(out[3]).toBe(100)
+    expect(out[5]).toBe(100)
+  })
+  it('rsi 单调下跌序列为 0', () => {
+    const out = rsi([6, 5, 4, 3, 2, 1], 3)
+    expect(out[3]).toBe(0)
+  })
+  it('boll 返回等长 mid/upper/lower；恒定序列上下轨等于中轨', () => {
+    const closes = [10, 10, 10, 10, 10]
+    const { mid, upper, lower } = boll(closes, 3, 2)
+    expect(mid).toHaveLength(5)
+    expect(mid.slice(0, 2)).toEqual([null, null])
+    expect(mid[2]).toBe(10)
+    expect(upper[2]).toBe(10)
+    expect(lower[2]).toBe(10)
+  })
+  it('boll 上轨高于中轨、下轨低于中轨（有波动时）', () => {
+    const { mid, upper, lower } = boll([8, 12, 9, 13, 10, 14], 3, 2)
+    const i = 5
+    expect(upper[i]).toBeGreaterThan(mid[i])
+    expect(lower[i]).toBeLessThan(mid[i])
   })
 })

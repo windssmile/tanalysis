@@ -62,3 +62,44 @@ export function kdj(data, n = 9, k1 = 3, d1 = 3) {
   }
   return { k, d, j }
 }
+
+// RSI：N 日内平均涨幅 ÷（平均涨幅 + 平均跌幅）× 100；前 period 个为 null
+export function rsi(closes, period = 14) {
+  const out = new Array(closes.length).fill(null)
+  const diffs = []
+  for (let i = 1; i < closes.length; i++) diffs.push(closes[i] - closes[i - 1])
+  // diffs[k] 对应 closes 第 k+1 根；RSI 在 closes 索引 i 处取最近 period 个 diff
+  for (let i = period; i < closes.length; i++) {
+    let gain = 0
+    let loss = 0
+    for (let k = i - period; k < i; k++) {
+      const d = diffs[k]
+      if (d >= 0) gain += d
+      else loss -= d
+    }
+    const avgGain = gain / period
+    const avgLoss = loss / period
+    out[i] = avgGain + avgLoss === 0 ? 50 : (avgGain / (avgGain + avgLoss)) * 100
+  }
+  return out
+}
+
+// 布林带：中轨 = SMA(N)，上/下轨 = 中轨 ± k×标准差；前 N-1 个为 null
+export function boll(closes, period = 20, k = 2) {
+  const mid = sma(closes, period)
+  const upper = []
+  const lower = []
+  for (let i = 0; i < closes.length; i++) {
+    if (mid[i] == null) {
+      upper.push(null)
+      lower.push(null)
+      continue
+    }
+    let sumSq = 0
+    for (let j = i - period + 1; j <= i; j++) sumSq += (closes[j] - mid[i]) ** 2
+    const std = Math.sqrt(sumSq / period)
+    upper.push(mid[i] + k * std)
+    lower.push(mid[i] - k * std)
+  }
+  return { mid, upper, lower }
+}

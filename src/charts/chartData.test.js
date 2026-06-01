@@ -5,6 +5,7 @@ const ids = [
   'kline-basics', 'hammer', 'doji', 'bullish-engulfing',
   'bearish-engulfing', 'morning-star', 'ma', 'macd', 'kdj',
   'rsi', 'boll',
+  'double-bottom', 'double-top', 'head-shoulders-top', 'ascending-triangle',
 ]
 
 describe('chartData', () => {

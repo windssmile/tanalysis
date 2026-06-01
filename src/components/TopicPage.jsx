@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom'
 import { getTopic } from '../content/topics/index.js'
+import { getCategory } from '../content/categories.js'
 import { getChart } from '../charts/chartRegistry.js'
 import TopicSidebar from './TopicSidebar.jsx'
 
@@ -33,7 +34,7 @@ export default function TopicPage() {
       <div className="topic-sidebar-wrap"><TopicSidebar category={category} currentId={t.id} /></div>
       <article style={{ flex: 1, minWidth: 0 }}>
       <div style={{ color: 'var(--text-mute)', fontSize: 12 }}>
-        <Link to="/">首页</Link> / <Link to={`/${category}`}>{t.category === 'candlestick' ? 'K线基础' : '技术指标'}</Link>
+        <Link to="/">首页</Link> / <Link to={`/${category}`}>{getCategory(category)?.name || category}</Link>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap', margin: '8px 0 16px' }}>
         <h1 style={{ fontSize: 22, margin: 0 }}>{t.title}</h1>

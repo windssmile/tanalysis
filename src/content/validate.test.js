@@ -5,8 +5,8 @@ import { hasChart } from '../charts/chartRegistry.js'
 import { getCategory } from './categories.js'
 
 describe('topics index', () => {
-  it('汇总 11 个条目', () => {
-    expect(allTopics).toHaveLength(11)
+  it('汇总 15 个条目', () => {
+    expect(allTopics).toHaveLength(15)
   })
   it('getTopic 按 id 返回，未知返回 undefined', () => {
     expect(getTopic('macd').title).toBe('MACD')
@@ -15,6 +15,7 @@ describe('topics index', () => {
   it('topicsByCategory 按板块过滤', () => {
     expect(topicsByCategory('candlestick')).toHaveLength(6)
     expect(topicsByCategory('indicator')).toHaveLength(5)
+    expect(topicsByCategory('pattern')).toHaveLength(4)
   })
 })
 

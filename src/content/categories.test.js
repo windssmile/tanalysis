@@ -5,8 +5,8 @@ describe('categories', () => {
   it('定义了全部 6 大板块', () => {
     expect(categories).toHaveLength(6)
   })
-  it('第一版仅启用 candlestick 与 indicator', () => {
-    expect(enabledCategories().map((c) => c.id)).toEqual(['candlestick', 'indicator'])
+  it('已启用 candlestick、indicator 与 pattern', () => {
+    expect(enabledCategories().map((c) => c.id)).toEqual(['candlestick', 'indicator', 'pattern'])
   })
   it('每个板块有 id/name/order/enabled 字段', () => {
     for (const c of categories) {

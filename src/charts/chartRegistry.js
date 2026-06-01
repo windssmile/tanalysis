@@ -19,6 +19,10 @@ const registry = {
   kdj: { Component: KDJChart, props: { data: chartData.kdj.candles } },
   rsi: { Component: RSIChart, props: { data: chartData.rsi.candles } },
   boll: { Component: BOLLChart, props: { data: chartData.boll.candles } },
+  'double-bottom': candle('double-bottom'),
+  'double-top': candle('double-top'),
+  'head-shoulders-top': candle('head-shoulders-top'),
+  'ascending-triangle': candle('ascending-triangle'),
 }
 
 function candle(id) {

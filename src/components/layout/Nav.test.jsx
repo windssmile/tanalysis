@@ -10,7 +10,8 @@ describe('Nav', () => {
     expect(screen.getByText('技术分析图谱')).toBeInTheDocument()
     expect(screen.getByText('K线基础')).toBeInTheDocument()
     expect(screen.getByText('技术指标')).toBeInTheDocument()
-    expect(screen.queryByText('经典形态')).not.toBeInTheDocument()
+    expect(screen.getByText('经典形态')).toBeInTheDocument()
+    expect(screen.queryByText('趋势理论')).not.toBeInTheDocument()
   })
 })
 

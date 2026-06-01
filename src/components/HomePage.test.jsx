@@ -13,6 +13,6 @@ describe('HomePage', () => {
     render(<MemoryRouter><HomePage /></MemoryRouter>)
     const enabled = screen.getByText('K线基础').closest('a')
     expect(enabled).toHaveAttribute('href', '/candlestick')
-    expect(screen.getAllByText('敬请期待').length).toBe(4)
+    expect(screen.getAllByText('敬请期待').length).toBe(3)
   })
 })

@@ -103,3 +103,73 @@ export function boll(closes, period = 20, k = 2) {
   }
   return { mid, upper, lower }
 }
+
+// OBV 能量潮：收盘较前一日上涨加量、下跌减量、持平不变（首值为 0）
+export function obv(data) {
+  const out = [0]
+  for (let i = 1; i < data.length; i++) {
+    const prev = out[i - 1]
+    if (data[i].c > data[i - 1].c) out.push(prev + data[i].v)
+    else if (data[i].c < data[i - 1].c) out.push(prev - data[i].v)
+    else out.push(prev)
+  }
+  return out
+}
+
+// BIAS 乖离率 =(收盘 − MA)/MA × 100；前 period-1 个为 null
+export function bias(closes, period) {
+  const ma = sma(closes, period)
+  return closes.map((c, i) => (ma[i] == null ? null : ((c - ma[i]) / ma[i]) * 100))
+}
+
+// DMI/ADX：基于 Wilder 平滑的方向性指标，返回 {pdi, mdi, adx}
+export function dmi(data, period = 14) {
+  const n = data.length
+  const tr = new Array(n).fill(0)
+  const plusDM = new Array(n).fill(0)
+  const minusDM = new Array(n).fill(0)
+  for (let i = 1; i < n; i++) {
+    const up = data[i].h - data[i - 1].h
+    const down = data[i - 1].l - data[i].l
+    plusDM[i] = up > down && up > 0 ? up : 0
+    minusDM[i] = down > up && down > 0 ? down : 0
+    tr[i] = Math.max(
+      data[i].h - data[i].l,
+      Math.abs(data[i].h - data[i - 1].c),
+      Math.abs(data[i].l - data[i - 1].c),
+    )
+  }
+  // Wilder 平滑：首个有效值为首 period 个之和，其后递推
+  const wilder = (arr) => {
+    const out = new Array(n).fill(null)
+    let sum = 0
+    for (let i = 1; i <= period; i++) sum += arr[i]
+    out[period] = sum
+    for (let i = period + 1; i < n; i++) out[i] = out[i - 1] - out[i - 1] / period + arr[i]
+    return out
+  }
+  const trN = wilder(tr)
+  const plusN = wilder(plusDM)
+  const minusN = wilder(minusDM)
+  const pdi = new Array(n).fill(null)
+  const mdi = new Array(n).fill(null)
+  const dx = new Array(n).fill(null)
+  for (let i = period; i < n; i++) {
+    if (!trN[i]) continue
+    pdi[i] = (plusN[i] / trN[i]) * 100
+    mdi[i] = (minusN[i] / trN[i]) * 100
+    const sum = pdi[i] + mdi[i]
+    dx[i] = sum === 0 ? 0 : (Math.abs(pdi[i] - mdi[i]) / sum) * 100
+  }
+  // ADX = DX 的 Wilder 平滑（从首个可算 DX 起算 period 个的均值）
+  const adx = new Array(n).fill(null)
+  const firstDX = period
+  const adxStart = firstDX + period - 1
+  if (adxStart < n) {
+    let sum = 0
+    for (let i = firstDX; i <= adxStart; i++) sum += dx[i]
+    adx[adxStart] = sum / period
+    for (let i = adxStart + 1; i < n; i++) adx[i] = (adx[i - 1] * (period - 1) + dx[i]) / period
+  }
+  return { pdi, mdi, adx }
+}

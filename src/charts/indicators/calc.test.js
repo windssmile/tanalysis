@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { sma, ema, macd, kdj, rsi, boll } from './calc.js'
+import { sma, ema, macd, kdj, rsi, boll, obv, bias, dmi } from './calc.js'
 
 describe('指标计算', () => {
   it('sma 简单移动平均，前 n-1 个为 null', () => {
@@ -60,5 +60,34 @@ describe('指标计算', () => {
     const i = 5
     expect(upper[i]).toBeGreaterThan(mid[i])
     expect(lower[i]).toBeLessThan(mid[i])
+  })
+  it('obv 随收盘涨跌累加/减去成交量', () => {
+    const data = [
+      { c: 10, v: 100 },
+      { c: 11, v: 50 }, // 涨：+50
+      { c: 10, v: 30 }, // 跌：-30
+      { c: 10, v: 40 }, // 平：不变
+    ]
+    expect(obv(data)).toEqual([0, 50, 20, 20])
+  })
+  it('bias 乖离率：前 n-1 个为 null，等于 (收-MA)/MA*100', () => {
+    const out = bias([10, 10, 13], 3)
+    expect(out.slice(0, 2)).toEqual([null, null])
+    // MA3 = 11, bias =(13-11)/11*100
+    expect(out[2]).toBeCloseTo((2 / 11) * 100, 6)
+  })
+  it('dmi 强上涨中 +DI 大于 -DI', () => {
+    const data = Array.from({ length: 40 }, (_, i) => ({
+      h: 10 + i + 0.5,
+      l: 10 + i - 0.5,
+      c: 10 + i,
+    }))
+    const { pdi, mdi, adx } = dmi(data, 14)
+    expect(pdi).toHaveLength(40)
+    expect(mdi).toHaveLength(40)
+    expect(adx).toHaveLength(40)
+    const last = 39
+    expect(pdi[last]).toBeGreaterThan(mdi[last])
+    expect(adx[last]).toBeGreaterThan(20)
   })
 })

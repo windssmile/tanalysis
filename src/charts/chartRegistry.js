@@ -8,6 +8,7 @@ import DMIChart from './indicators/DMIChart.jsx'
 import OBVChart from './indicators/OBVChart.jsx'
 import BIASChart from './indicators/BIASChart.jsx'
 import PriceVolumeChart from './PriceVolumeChart.jsx'
+import ChipChart from './ChipChart.jsx'
 import { chartData } from './chartData.js'
 
 // chartId → { Component, props }
@@ -37,6 +38,7 @@ const registry = {
   'volume-price': priceVolume('volume-price'),
   'volume-breakout': priceVolume('volume-breakout'),
   'volume-divergence': priceVolume('volume-divergence'),
+  'chip-distribution': { Component: ChipChart, props: { data: chartData['chip-distribution'].candles } },
 }
 
 function priceVolume(id) {

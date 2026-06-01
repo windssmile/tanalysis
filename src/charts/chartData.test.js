@@ -8,6 +8,7 @@ const ids = [
   'double-bottom', 'double-top', 'head-shoulders-top', 'ascending-triangle',
   'trend-line', 'support-resistance', 'dow-theory', 'quant-signals',
   'volume-price', 'volume-breakout', 'volume-divergence',
+  'chip-distribution',
 ]
 
 describe('chartData', () => {

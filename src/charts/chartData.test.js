@@ -4,10 +4,11 @@ import { chartData } from './chartData.js'
 const ids = [
   'kline-basics', 'hammer', 'doji', 'bullish-engulfing',
   'bearish-engulfing', 'morning-star', 'ma', 'macd', 'kdj',
+  'rsi', 'boll',
 ]
 
 describe('chartData', () => {
-  it('覆盖全部 9 个条目', () => {
+  it('覆盖全部指标与 K线条目', () => {
     for (const id of ids) expect(chartData[id]).toBeDefined()
   })
   it('每个条目含非空 candles 数组，且每根有 o/h/l/c', () => {

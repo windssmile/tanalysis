@@ -48,10 +48,12 @@ export const chartData = {
     ],
     annotations: [{ type: 'highlight', index: 1 }],
   },
-  // MA/MACD/KDJ：一段先跌后涨的趋势数据
+  // MA/MACD/KDJ/RSI/BOLL：一段先跌后涨的趋势数据
   ma: { candles: genTrend() },
   macd: { candles: genTrend() },
   kdj: { candles: genTrend() },
+  rsi: { candles: genTrend() },
+  boll: { candles: genTrend() },
 }
 
 function genTrend() {

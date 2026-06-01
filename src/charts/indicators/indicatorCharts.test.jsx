@@ -4,6 +4,8 @@ import { chartData } from '../chartData.js'
 import MAChart from './MAChart.jsx'
 import MACDChart from './MACDChart.jsx'
 import KDJChart from './KDJChart.jsx'
+import RSIChart from './RSIChart.jsx'
+import BOLLChart from './BOLLChart.jsx'
 
 describe('指标图表', () => {
   it('MAChart 在 K线主图上叠加均线 polyline', () => {
@@ -19,5 +21,14 @@ describe('指标图表', () => {
   it('KDJChart 渲染 K/D/J 三条线', () => {
     const { container } = render(<KDJChart data={chartData.kdj.candles} />)
     expect(container.querySelectorAll('polyline').length).toBe(3)
+  })
+  it('RSIChart 渲染 RSI6/12/24 三条线', () => {
+    const { container } = render(<RSIChart data={chartData.rsi.candles} />)
+    expect(container.querySelectorAll('polyline').length).toBe(3)
+  })
+  it('BOLLChart 在 K线主图上叠加上/中/下轨', () => {
+    const { container } = render(<BOLLChart data={chartData.boll.candles} />)
+    expect(container.querySelectorAll('polyline').length).toBe(3)
+    expect(container.querySelectorAll('rect[data-role="body"]').length).toBeGreaterThan(0)
   })
 })

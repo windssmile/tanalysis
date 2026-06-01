@@ -80,6 +80,24 @@ export default function CandleChart({
           )
         })}
 
+      {/* 斜趋势线（趋势线/通道边界） */}
+      {annotations
+        .filter((a) => a.type === 'trendline')
+        .map((a, i) => {
+          const x1 = slot * a.from.i + slot / 2
+          const x2 = slot * a.to.i + slot / 2
+          const y1 = scaleY(a.from.price, { min, max, height, pad })
+          const y2 = scaleY(a.to.price, { min, max, height, pad })
+          return (
+            <g key={`trend-${i}`}>
+              <line data-role="trendline" x1={x1} y1={y1} x2={x2} y2={y2} stroke="#fbbf24" strokeWidth="1.4" />
+              {a.label && (
+                <text x={x2} y={y2 - 6} fill="#fbbf24" fontSize="11" textAnchor="end">{a.label}</text>
+              )}
+            </g>
+          )
+        })}
+
       {/* K线 */}
       {laid.map((c, i) => {
         const color = c.bullish ? UP : DOWN

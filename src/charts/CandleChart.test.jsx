@@ -34,4 +34,14 @@ describe('CandleChart', () => {
     expect(container.querySelector('line[data-role="hline"]')).toBeTruthy()
     expect(getByText('颈线')).toBeTruthy()
   })
+  it('渲染斜趋势线标注', () => {
+    const { getByText, container } = render(
+      <CandleChart
+        data={data}
+        annotations={[{ type: 'trendline', from: { i: 0, price: 9 }, to: { i: 1, price: 13 }, label: '上升趋势线' }]}
+      />
+    )
+    expect(container.querySelector('line[data-role="trendline"]')).toBeTruthy()
+    expect(getByText('上升趋势线')).toBeTruthy()
+  })
 })

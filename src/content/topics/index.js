@@ -3,6 +3,7 @@ import { indicatorTopics } from './indicator.js'
 import { patternTopics } from './pattern.js'
 import { theoryTopics } from './theory.js'
 import { volumeTopics } from './volume.js'
+import { strategyTopics } from './strategy.js'
 
 export const allTopics = [
   ...candlestickTopics,
@@ -10,6 +11,7 @@ export const allTopics = [
   ...patternTopics,
   ...theoryTopics,
   ...volumeTopics,
+  ...strategyTopics,
 ]
 
 export function getTopic(id) {

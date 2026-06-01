@@ -81,6 +81,14 @@ export default function TopicPage() {
         <div style={{ background: 'rgba(244,63,94,0.08)', borderLeft: '3px solid var(--warn)', borderRadius: '0 6px 6px 0', padding: '10px 14px', marginTop: 8 }}>
           <div style={{ color: '#f87a8a', fontSize: 13, fontWeight: 700 }}>⚠ <span>局限</span></div>
           <p style={{ color: '#cbd5e1', margin: '4px 0 0' }}>{s.limitation}</p>
+          {Array.isArray(s.pitfalls) && s.pitfalls.length > 0 && (
+            <>
+              <div style={{ color: '#f87a8a', fontSize: 12, fontWeight: 700, margin: '10px 0 2px' }}>何时会失效</div>
+              <ul style={{ margin: 0, paddingLeft: 18, color: '#cbd5e1', lineHeight: 1.8 }}>
+                {s.pitfalls.map((x, i) => <li key={i}>{x}</li>)}
+              </ul>
+            </>
+          )}
         </div>
       </div>
 

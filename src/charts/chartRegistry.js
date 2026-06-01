@@ -10,6 +10,8 @@ import BIASChart from './indicators/BIASChart.jsx'
 import PriceVolumeChart from './PriceVolumeChart.jsx'
 import ChipChart from './ChipChart.jsx'
 import MultiTimeframeChart from './MultiTimeframeChart.jsx'
+import IntradayChart from './IntradayChart.jsx'
+import OrderBookTable from './OrderBookTable.jsx'
 import { chartData } from './chartData.js'
 
 // chartId → { Component, props }
@@ -62,6 +64,10 @@ const registry = {
   'flag-wedge': candle('flag-wedge'),
   gap: candle('gap'),
   'v-reversal': candle('v-reversal'),
+  'intraday-basics': { Component: IntradayChart, props: { data: chartData['intraday-basics'] } },
+  'intraday-avgline': { Component: IntradayChart, props: { data: chartData['intraday-avgline'] } },
+  'intraday-auction': { Component: IntradayChart, props: { data: chartData['intraday-auction'] } },
+  'order-book': { Component: OrderBookTable, props: { data: chartData['order-book'] } },
 }
 
 function priceVolume(id) {

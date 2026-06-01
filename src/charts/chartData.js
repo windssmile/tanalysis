@@ -255,6 +255,53 @@ export const chartData = {
     candles: fromPath([16, 15, 13.5, 12, 11, 12.5, 14, 15.5, 16.5]),
     annotations: [{ type: 'highlight', index: 4 }],
   },
+
+  // 分时图基础：平开后冲高回落、午后企稳的一天
+  'intraday-basics': genIntraday(10, [
+    10, 10.15, 10.32, 10.28, 10.12, 9.98, 9.95, 10.02, 10.08, 10.05, 10.1, 10.18,
+  ]),
+  // 均价线与分时量价：早盘弱于均价、午后站上均价线走强
+  'intraday-avgline': genIntraday(10, [
+    9.98, 9.9, 9.85, 9.92, 9.96, 10.0, 10.05, 10.12, 10.2, 10.26, 10.3, 10.34,
+  ]),
+  // 集合竞价：高开后高位震荡（昨收 10，9:30 高开至 10.3 附近）
+  'intraday-auction': genIntraday(10, [
+    10.3, 10.28, 10.34, 10.26, 10.22, 10.3, 10.36, 10.32, 10.28, 10.33, 10.38, 10.35,
+  ]),
+
+  // 盘口：买卖五档 + 委比/内外盘
+  'order-book': {
+    asks: [
+      { label: '卖五', price: 10.25, vol: 320 },
+      { label: '卖四', price: 10.24, vol: 180 },
+      { label: '卖三', price: 10.23, vol: 90 },
+      { label: '卖二', price: 10.22, vol: 150 },
+      { label: '卖一', price: 10.21, vol: 60 },
+    ],
+    bids: [
+      { label: '买一', price: 10.2, vol: 240 },
+      { label: '买二', price: 10.19, vol: 130 },
+      { label: '买三', price: 10.18, vol: 200 },
+      { label: '买四', price: 10.17, vol: 110 },
+      { label: '买五', price: 10.16, vol: 80 },
+    ],
+    ratio: 12.5,
+    inner: 3200,
+    outer: 4100,
+  },
+}
+
+// 由逐点价格生成分时数据：均价为累计成交额 ÷ 累计成交量（当日 VWAP）
+function genIntraday(prevClose, prices) {
+  let cumPV = 0
+  let cumV = 0
+  const points = prices.map((p, i) => {
+    const vol = Math.round(80 + Math.abs(p - (prices[i - 1] ?? prevClose)) * 800 + (Math.sin(i / 2) + 1) * 30)
+    cumPV += p * vol
+    cumV += vol
+    return { price: round(p), avg: round(cumPV / cumV), vol }
+  })
+  return { prevClose, points }
 }
 
 // 把一串收盘价路径转成连续 K线：开=前收，高/低在实体外各留余量。

@@ -11,6 +11,9 @@ const ids = [
   'chip-distribution',
   'multi-indicator-resonance', 'market-regime', 'multi-timeframe',
   'position-risk', 'trading-system',
+  'dark-cloud-cover', 'piercing-line', 'evening-star', 'harami',
+  'shooting-star', 'hanging-man',
+  'rectangle', 'flag-wedge', 'gap', 'v-reversal',
 ]
 
 describe('chartData', () => {

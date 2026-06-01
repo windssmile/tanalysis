@@ -52,6 +52,16 @@ const registry = {
   },
   'position-risk': candle('position-risk'),
   'trading-system': candle('trading-system'),
+  'dark-cloud-cover': candle('dark-cloud-cover'),
+  'piercing-line': candle('piercing-line'),
+  'evening-star': candle('evening-star'),
+  harami: candle('harami'),
+  'shooting-star': candle('shooting-star'),
+  'hanging-man': candle('hanging-man'),
+  rectangle: candle('rectangle'),
+  'flag-wedge': candle('flag-wedge'),
+  gap: candle('gap'),
+  'v-reversal': candle('v-reversal'),
 }
 
 function priceVolume(id) {

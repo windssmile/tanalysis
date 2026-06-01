@@ -175,6 +175,86 @@ export const chartData = {
       { type: 'line', price: 14, label: '目标' },
     ],
   },
+
+  // 乌云盖顶：上涨中大阳后高开大阴，收盘深入前阳实体过半
+  'dark-cloud-cover': {
+    candles: [
+      { o: 12, h: 13.2, l: 11.9, c: 13 },
+      { o: 13.3, h: 13.5, l: 12.2, c: 12.4 },
+    ],
+    annotations: [{ type: 'box', from: 0, to: 1, label: '乌云盖顶' }],
+  },
+  // 刺透形态：下跌中大阴后低开大阳，收盘深入前阴实体过半
+  'piercing-line': {
+    candles: [
+      { o: 13, h: 13.1, l: 11.8, c: 12 },
+      { o: 11.7, h: 12.7, l: 11.6, c: 12.6 },
+    ],
+    annotations: [{ type: 'box', from: 0, to: 1, label: '刺透' }],
+  },
+  // 黄昏之星：大阳 + 高位小星 + 大阴深入第一阳
+  'evening-star': {
+    candles: [
+      { o: 12, h: 14, l: 11.9, c: 13.9 },
+      { o: 14.1, h: 14.4, l: 13.9, c: 14.05 },
+      { o: 13.8, h: 13.9, l: 12, c: 12.1 },
+    ],
+    annotations: [{ type: 'highlight', index: 1 }],
+  },
+  // 孕线：大阴后一根小实体完全落在前一实体之内
+  harami: {
+    candles: [
+      { o: 13.5, h: 13.7, l: 11.8, c: 12 },
+      { o: 12.3, h: 12.6, l: 12.1, c: 12.5 },
+    ],
+    annotations: [{ type: 'box', from: 0, to: 1, label: '孕线' }],
+  },
+  // 流星线：上涨末端，小实体在下端、长上影
+  'shooting-star': {
+    candles: [
+      { o: 12, h: 12.3, l: 11.9, c: 12.2 },
+      { o: 12.2, h: 12.5, l: 12.1, c: 12.4 },
+      { o: 12.5, h: 13.6, l: 12.4, c: 12.6 },
+    ],
+    annotations: [{ type: 'highlight', index: 2 }],
+  },
+  // 上吊线：上涨末端，小实体在上端、长下影（形似锤子但位于高位）
+  'hanging-man': {
+    candles: [
+      { o: 12, h: 12.3, l: 11.9, c: 12.2 },
+      { o: 12.2, h: 12.5, l: 12.1, c: 12.4 },
+      { o: 12.5, h: 12.7, l: 11.5, c: 12.55 },
+    ],
+    annotations: [{ type: 'highlight', index: 2 }],
+  },
+
+  // 矩形整理：在水平支撑与压力间往返，末端突破
+  rectangle: {
+    candles: fromPath([12, 13, 12.1, 12.9, 12.2, 13, 12.1, 13.5, 14]),
+    annotations: [
+      { type: 'line', price: 13, label: '压力' },
+      { type: 'line', price: 12, label: '支撑' },
+    ],
+  },
+  // 旗形与楔形：急涨旗杆后小幅回落整理（旗面），再续涨
+  'flag-wedge': {
+    candles: fromPath([10, 11, 12, 13, 14, 13.6, 13.8, 13.4, 13.6, 13.2, 14, 15]),
+    annotations: [{ type: 'box', from: 5, to: 9, label: '旗面整理' }],
+  },
+  // 跳空缺口：第二根低点高于第一根高点，留下跳空
+  gap: {
+    candles: [
+      { o: 11, h: 11.5, l: 10.8, c: 11.4 },
+      { o: 12, h: 12.6, l: 11.9, c: 12.5 },
+      { o: 12.5, h: 13, l: 12.4, c: 12.9 },
+    ],
+    annotations: [{ type: 'line', price: 11.7, label: '跳空缺口' }],
+  },
+  // V形反转：急跌后急涨，形如 V
+  'v-reversal': {
+    candles: fromPath([16, 15, 13.5, 12, 11, 12.5, 14, 15.5, 16.5]),
+    annotations: [{ type: 'highlight', index: 4 }],
+  },
 }
 
 // 把一串收盘价路径转成连续 K线：开=前收，高/低在实体外各留余量。

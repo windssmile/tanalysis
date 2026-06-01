@@ -20,4 +20,10 @@ describe('candlestick topics', () => {
     const ids = candlestickTopics.map((t) => t.id)
     expect(new Set(ids).size).toBe(ids.length)
   })
+  it('每个条目含 metrics(量化刻画) 数组', () => {
+    for (const t of candlestickTopics) {
+      expect(Array.isArray(t.sections.metrics)).toBe(true)
+      expect(t.sections.metrics.length).toBeGreaterThan(0)
+    }
+  })
 })

@@ -56,6 +56,16 @@ export default function TopicPage() {
         <SectionTitle>识别要点</SectionTitle>
         <Bullets items={s.identify} />
 
+        {Array.isArray(s.metrics) && s.metrics.length > 0 && (
+          <div style={{ background: 'var(--surface-2)', border: '1px solid var(--border)', borderRadius: 'var(--radius-sm)', padding: '10px 14px', margin: '4px 0 16px' }}>
+            <div style={{ color: 'var(--accent)', fontSize: 13, fontWeight: 700, marginBottom: 2 }}>📏 <span>量化刻画</span></div>
+            <div style={{ color: 'var(--text-mute)', fontSize: 11, marginBottom: 6 }}>以下为常用经验参考值，随品种波动率与周期而变，并非普适常数。</div>
+            <ul style={{ margin: 0, paddingLeft: 18, color: '#cbd5e1', lineHeight: 1.8 }}>
+              {s.metrics.map((x, i) => <li key={i}>{x}</li>)}
+            </ul>
+          </div>
+        )}
+
         <SectionTitle>使用提示</SectionTitle>
         <Bullets items={s.usage} />
 

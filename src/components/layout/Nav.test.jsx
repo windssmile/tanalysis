@@ -12,7 +12,8 @@ describe('Nav', () => {
     expect(screen.getByText('技术指标')).toBeInTheDocument()
     expect(screen.getByText('经典形态')).toBeInTheDocument()
     expect(screen.getByText('趋势理论')).toBeInTheDocument()
-    expect(screen.queryByText('分时图分析')).not.toBeInTheDocument()
+    expect(screen.getByText('分时图分析')).toBeInTheDocument()
+    expect(screen.getByText('实战框架')).toBeInTheDocument()
   })
 })
 

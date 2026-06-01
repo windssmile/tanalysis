@@ -3,6 +3,7 @@ import { indicatorTopics } from './indicator.js'
 import { patternTopics } from './pattern.js'
 import { theoryTopics } from './theory.js'
 import { volumeTopics } from './volume.js'
+import { intradayTopics } from './intraday.js'
 import { strategyTopics } from './strategy.js'
 
 export const allTopics = [
@@ -11,6 +12,7 @@ export const allTopics = [
   ...patternTopics,
   ...theoryTopics,
   ...volumeTopics,
+  ...intradayTopics,
   ...strategyTopics,
 ]
 

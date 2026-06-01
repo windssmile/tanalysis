@@ -75,10 +75,65 @@ export const chartData = {
     candles: fromPath([12, 13, 14.2, 15, 14.2, 13.6, 14.4, 15, 14.3, 14, 14.7, 15, 14.8, 15.6, 16.4]),
     annotations: [{ type: 'line', price: 15, label: '压力' }],
   },
+
+  // 上升趋势线：上涨途中回踩低点不断抬高，连成一条上升支撑线
+  'trend-line': {
+    candles: fromPath([10, 11, 12, 11, 11.5, 13, 14, 12.8, 13.5, 15, 16, 14.8, 15.5, 17]),
+    annotations: [{ type: 'trendline', from: { i: 3, price: 10.5 }, to: { i: 11, price: 14.3 }, label: '上升趋势线' }],
+  },
+  // 支撑与压力：区间震荡，价格在支撑与压力之间往返
+  'support-resistance': {
+    candles: fromPath([13, 14.5, 15, 13.5, 12, 11.2, 12.5, 14, 15, 13.8, 12, 11.3, 12.5, 14.5, 15]),
+    annotations: [
+      { type: 'line', price: 15, label: '压力' },
+      { type: 'line', price: 11.2, label: '支撑' },
+    ],
+  },
+  // 道氏理论：高点与低点依次抬高，构成上升趋势
+  'dow-theory': {
+    candles: fromPath([10, 12, 11, 13, 12, 14.5, 13.5, 16, 15, 17]),
+    annotations: [{ type: 'trendline', from: { i: 0, price: 9.6 }, to: { i: 8, price: 14.6 }, label: '上升趋势' }],
+  },
+  // 量化视角总览：在一段趋势上标出若干"信号触发点"
+  'quant-signals': {
+    candles: fromPath([12, 11.5, 12.5, 11, 12, 13.5, 12.8, 14, 13.2, 15, 14.3, 16]),
+    annotations: [
+      { type: 'highlight', index: 3 },
+      { type: 'highlight', index: 6 },
+      { type: 'highlight', index: 8 },
+    ],
+  },
+
+  // 量价关系基础：上涨段量增价涨（健康），尾部价涨量缩（背离预警）
+  'volume-price': {
+    candles: fromPath(
+      [10, 10.6, 11.3, 12, 12.8, 13.6, 14.2, 14.7, 15, 15.2],
+      [80, 110, 140, 170, 200, 230, 150, 110, 80, 60],
+    ),
+  },
+  // 放量突破：横盘缩量整理后，一根放量长阳突破压力
+  'volume-breakout': {
+    candles: fromPath(
+      [12, 11.9, 12.1, 11.8, 12, 11.9, 12.1, 12, 13.6, 14.2],
+      [70, 60, 65, 55, 60, 50, 58, 65, 260, 180],
+    ),
+    annotations: [
+      { type: 'line', price: 12.3, label: '压力' },
+      { type: 'highlight', index: 8 },
+    ],
+  },
+  // 量价背离：价格创新高，但成交量逐级萎缩，上涨动能存疑
+  'volume-divergence': {
+    candles: fromPath(
+      [12, 12.6, 13, 12.7, 13.4, 13.1, 13.8, 13.5, 14.1, 14.3],
+      [200, 180, 160, 130, 120, 100, 90, 75, 70, 55],
+    ),
+  },
 }
 
-// 把一串收盘价路径转成连续 K线：开=前收，高/低在实体外各留余量
-function fromPath(closes) {
+// 把一串收盘价路径转成连续 K线：开=前收，高/低在实体外各留余量。
+// 传入 volumes（与 closes 等长）时附带成交量 v 字段。
+function fromPath(closes, volumes) {
   const out = []
   let prev = closes[0]
   for (let i = 0; i < closes.length; i++) {
@@ -86,7 +141,9 @@ function fromPath(closes) {
     const c = closes[i]
     const h = Math.max(o, c) + 0.3
     const l = Math.min(o, c) - 0.3
-    out.push({ o: round(o), h: round(h), l: round(l), c: round(c) })
+    const candle = { o: round(o), h: round(h), l: round(l), c: round(c) }
+    if (volumes) candle.v = volumes[i]
+    out.push(candle)
     prev = c
   }
   return out

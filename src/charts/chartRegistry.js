@@ -4,6 +4,7 @@ import MACDChart from './indicators/MACDChart.jsx'
 import KDJChart from './indicators/KDJChart.jsx'
 import RSIChart from './indicators/RSIChart.jsx'
 import BOLLChart from './indicators/BOLLChart.jsx'
+import PriceVolumeChart from './PriceVolumeChart.jsx'
 import { chartData } from './chartData.js'
 
 // chartId → { Component, props }
@@ -23,6 +24,20 @@ const registry = {
   'double-top': candle('double-top'),
   'head-shoulders-top': candle('head-shoulders-top'),
   'ascending-triangle': candle('ascending-triangle'),
+  'trend-line': candle('trend-line'),
+  'support-resistance': candle('support-resistance'),
+  'dow-theory': candle('dow-theory'),
+  'quant-signals': candle('quant-signals'),
+  'volume-price': priceVolume('volume-price'),
+  'volume-breakout': priceVolume('volume-breakout'),
+  'volume-divergence': priceVolume('volume-divergence'),
+}
+
+function priceVolume(id) {
+  return {
+    Component: PriceVolumeChart,
+    props: { data: chartData[id].candles, annotations: chartData[id].annotations || [] },
+  }
 }
 
 function candle(id) {

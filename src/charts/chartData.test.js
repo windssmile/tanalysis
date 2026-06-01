@@ -6,6 +6,8 @@ const ids = [
   'bearish-engulfing', 'morning-star', 'ma', 'macd', 'kdj',
   'rsi', 'boll',
   'double-bottom', 'double-top', 'head-shoulders-top', 'ascending-triangle',
+  'trend-line', 'support-resistance', 'dow-theory', 'quant-signals',
+  'volume-price', 'volume-breakout', 'volume-divergence',
 ]
 
 describe('chartData', () => {

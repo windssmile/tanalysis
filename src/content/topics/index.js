@@ -1,8 +1,16 @@
 import { candlestickTopics } from './candlestick.js'
 import { indicatorTopics } from './indicator.js'
 import { patternTopics } from './pattern.js'
+import { theoryTopics } from './theory.js'
+import { volumeTopics } from './volume.js'
 
-export const allTopics = [...candlestickTopics, ...indicatorTopics, ...patternTopics]
+export const allTopics = [
+  ...candlestickTopics,
+  ...indicatorTopics,
+  ...patternTopics,
+  ...theoryTopics,
+  ...volumeTopics,
+]
 
 export function getTopic(id) {
   return allTopics.find((t) => t.id === id)

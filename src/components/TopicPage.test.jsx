@@ -28,6 +28,10 @@ describe('TopicPage', () => {
     renderAt('/candlestick/hammer')
     expect(screen.queryByText('计算原理')).not.toBeInTheDocument()
   })
+  it('含 quant 字段的条目渲染量化视角', () => {
+    renderAt('/theory/trend-line')
+    expect(screen.getByText('量化视角')).toBeInTheDocument()
+  })
   it('无 quant 字段的条目不渲染量化视角', () => {
     renderAt('/candlestick/hammer')
     expect(screen.queryByText('量化视角')).not.toBeInTheDocument()

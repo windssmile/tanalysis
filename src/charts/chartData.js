@@ -134,6 +134,47 @@ export const chartData = {
   },
   // 筹码分布：一段震荡积累后上行，低位密集成交形成获利盘
   'chip-distribution': { candles: genTrendV() },
+
+  // 多指标共振：下跌见底后多条件同时转多，标出共振入场点
+  'multi-indicator-resonance': {
+    candles: fromPath([16, 15, 14, 13, 12.4, 12, 12.3, 13.2, 14.2, 15.2, 16.2]),
+    annotations: [
+      { type: 'highlight', index: 6 },
+      { type: 'highlight', index: 7 },
+    ],
+  },
+  // 市场状态识别：前段震荡（ADX 低）、后段趋势（ADX 高）
+  'market-regime': {
+    candles: fromPath([12, 12.8, 12.1, 12.9, 12.2, 12.7, 12.2, 13.4, 14.4, 15.4, 16.4]),
+    annotations: [
+      { type: 'box', from: 0, to: 6, label: '震荡区(ADX低)' },
+      { type: 'trendline', from: { i: 6, price: 12 }, to: { i: 10, price: 16 }, label: '趋势区(ADX高)' },
+    ],
+  },
+  // 多周期共振：周线上行定方向，日线回调后企稳找买点
+  'multi-timeframe': {
+    candles: fromPath([15, 14.6, 14.2, 14.4, 14, 14.3, 15, 15.6]),
+    weekly: fromPath([10, 11, 12, 11.8, 13, 14, 13.8, 15]),
+    annotations: [{ type: 'highlight', index: 4 }],
+  },
+  // 仓位与止损止盈：入场、止损(-1R)、目标(+2R) 三条价位线
+  'position-risk': {
+    candles: fromPath([12.3, 12.1, 12.5, 12.4, 12.9, 13.4, 13.6]),
+    annotations: [
+      { type: 'line', price: 12.3, label: '入场' },
+      { type: 'line', price: 11.7, label: '止损 -1R' },
+      { type: 'line', price: 13.5, label: '目标 +2R' },
+    ],
+  },
+  // 交易规则范例：突破入场(高亮)+止损线+目标线，完整一笔
+  'trading-system': {
+    candles: fromPath([11, 10.8, 11, 11.6, 12.3, 13, 13.8, 14.2]),
+    annotations: [
+      { type: 'highlight', index: 3 },
+      { type: 'line', price: 10.6, label: '止损' },
+      { type: 'line', price: 14, label: '目标' },
+    ],
+  },
 }
 
 // 把一串收盘价路径转成连续 K线：开=前收，高/低在实体外各留余量。

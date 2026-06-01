@@ -9,6 +9,7 @@ import OBVChart from './indicators/OBVChart.jsx'
 import BIASChart from './indicators/BIASChart.jsx'
 import PriceVolumeChart from './PriceVolumeChart.jsx'
 import ChipChart from './ChipChart.jsx'
+import MultiTimeframeChart from './MultiTimeframeChart.jsx'
 import { chartData } from './chartData.js'
 
 // chartId → { Component, props }
@@ -39,6 +40,18 @@ const registry = {
   'volume-breakout': priceVolume('volume-breakout'),
   'volume-divergence': priceVolume('volume-divergence'),
   'chip-distribution': { Component: ChipChart, props: { data: chartData['chip-distribution'].candles } },
+  'multi-indicator-resonance': candle('multi-indicator-resonance'),
+  'market-regime': candle('market-regime'),
+  'multi-timeframe': {
+    Component: MultiTimeframeChart,
+    props: {
+      data: chartData['multi-timeframe'].candles,
+      weekly: chartData['multi-timeframe'].weekly,
+      annotations: chartData['multi-timeframe'].annotations || [],
+    },
+  },
+  'position-risk': candle('position-risk'),
+  'trading-system': candle('trading-system'),
 }
 
 function priceVolume(id) {

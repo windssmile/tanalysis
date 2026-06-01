@@ -9,6 +9,8 @@ const ids = [
   'trend-line', 'support-resistance', 'dow-theory', 'quant-signals',
   'volume-price', 'volume-breakout', 'volume-divergence',
   'chip-distribution',
+  'multi-indicator-resonance', 'market-regime', 'multi-timeframe',
+  'position-risk', 'trading-system',
 ]
 
 describe('chartData', () => {

@@ -18,4 +18,10 @@ describe('volume topics', () => {
       expect(Array.isArray(t.sections.metrics)).toBe(true)
     }
   })
+  it('每个条目含 pitfalls(失效场景) 数组', () => {
+    for (const t of volumeTopics) {
+      expect(Array.isArray(t.sections.pitfalls)).toBe(true)
+      expect(t.sections.pitfalls.length).toBeGreaterThan(0)
+    }
+  })
 })

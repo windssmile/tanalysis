@@ -2,8 +2,8 @@ import { describe, it, expect } from 'vitest'
 import { candlestickTopics } from './candlestick.js'
 
 describe('candlestick topics', () => {
-  it('包含 12 个条目', () => {
-    expect(candlestickTopics).toHaveLength(12)
+  it('包含 16 个条目', () => {
+    expect(candlestickTopics).toHaveLength(16)
   })
   it('全部 category 为 candlestick', () => {
     for (const t of candlestickTopics) expect(t.category).toBe('candlestick')

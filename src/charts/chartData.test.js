@@ -13,6 +13,7 @@ const ids = [
   'position-risk', 'trading-system',
   'dark-cloud-cover', 'piercing-line', 'evening-star', 'harami',
   'shooting-star', 'hanging-man',
+  'three-white-soldiers', 'three-black-crows', 'inverted-hammer', 'special-doji',
   'rectangle', 'flag-wedge', 'gap', 'v-reversal',
   'false-breakout', 'trading-psychology', 'drawdown-ruin', 'a-share-risks',
 ]

@@ -227,6 +227,48 @@ export const chartData = {
     ],
     annotations: [{ type: 'highlight', index: 2 }],
   },
+  // 红三兵：三根依次抬高的中阳线，实体层层叠上
+  'three-white-soldiers': {
+    candles: [
+      { o: 10, h: 10.3, l: 9.8, c: 10.2 },
+      { o: 10.1, h: 11, l: 10, c: 10.9 },
+      { o: 10.8, h: 11.8, l: 10.7, c: 11.7 },
+      { o: 11.6, h: 12.6, l: 11.5, c: 12.5 },
+    ],
+    annotations: [{ type: 'box', from: 1, to: 3, label: '红三兵' }],
+  },
+  // 三只乌鸦：三根依次走低的中阴线，高位连阴
+  'three-black-crows': {
+    candles: [
+      { o: 13.4, h: 13.6, l: 13.1, c: 13.2 },
+      { o: 13.3, h: 13.4, l: 12.4, c: 12.5 },
+      { o: 12.5, h: 12.6, l: 11.5, c: 11.6 },
+      { o: 11.6, h: 11.7, l: 10.6, c: 10.7 },
+    ],
+    annotations: [{ type: 'box', from: 1, to: 3, label: '三只乌鸦' }],
+  },
+  // 倒锤线：下跌末端，小实体在下端、长上影（与流星同形异位）
+  'inverted-hammer': {
+    candles: [
+      { o: 13, h: 13.2, l: 12, c: 12.2 },
+      { o: 12.2, h: 12.4, l: 11.5, c: 11.7 },
+      { o: 11.5, h: 12.6, l: 11.4, c: 11.7 },
+    ],
+    annotations: [{ type: 'highlight', index: 2 }],
+  },
+  // 特殊十字星：墓碑（长上影）/蜻蜓（长下影）/长腿十字 并列
+  'special-doji': {
+    candles: [
+      { o: 10.5, h: 11.5, l: 10.45, c: 10.5 },
+      { o: 10.5, h: 10.55, l: 9.5, c: 10.5 },
+      { o: 10.5, h: 11.4, l: 9.6, c: 10.5 },
+    ],
+    annotations: [
+      { type: 'highlight', index: 0 },
+      { type: 'highlight', index: 1 },
+      { type: 'highlight', index: 2 },
+    ],
+  },
 
   // 矩形整理：在水平支撑与压力间往返，末端突破
   rectangle: {

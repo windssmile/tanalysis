@@ -22,6 +22,7 @@ export function run(series, signals, { costBps = 0 } = {}) {
 
   const count = trades.length
   const wins = trades.filter((t) => t.netReturn > 0)
+  // 约定：净收益为 0 的平局也计入“亏损”一侧（胜率取严格 >0），口径偏保守
   const losses = trades.filter((t) => t.netReturn <= 0)
   const mean = (arr) => (arr.length ? arr.reduce((a, b) => a + b, 0) / arr.length : 0)
   const winRate = count ? wins.length / count : 0

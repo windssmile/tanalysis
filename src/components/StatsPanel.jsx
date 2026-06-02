@@ -25,7 +25,7 @@ export default function StatsPanel({ strategy, control }) {
           </tr>
         ))}
         <tr data-role="stats-row" style={{ borderTop: '1px solid var(--border-strong)' }}>
-          <td style={{ padding: 8, color: 'var(--text-dim)' }}>买入持有(基准)</td>
+          <td style={{ padding: 8, color: 'var(--text-dim)' }}>本策略数据·买入持有</td>
           <td colSpan={2} style={{ padding: 8, textAlign: 'center', color: 'var(--primary-text)' }}>
             {pct(strategy.buyHoldReturn)}
           </td>

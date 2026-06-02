@@ -16,11 +16,11 @@ export default function EffectivenessMatrix() {
       <p
         data-role="matrix-disclaimer"
         style={{
-          color: 'var(--warn)', background: 'var(--surface)', border: '1px solid var(--border-strong)',
+          color: 'var(--text-dim)', background: 'var(--surface)', border: '1px solid var(--border-strong)',
           borderRadius: 'var(--radius-sm)', padding: '10px 14px', fontSize: 13, marginTop: 8,
         }}
       >
-        本表为<strong>定性经验判断，非统计结论</strong>。同一工具在不同市场状态下有效性差异很大；
+        本表为<strong style={{ color: 'var(--warn)' }}>定性经验判断，非统计结论</strong>。同一工具在不同市场状态下有效性差异很大；
         评级配色用中性色（与红涨绿跌无关）。真实有效性需用真实行情回测验证（见后续 playground）。
       </p>
       <div style={{ overflowX: 'auto', marginTop: 16 }}>

@@ -20,6 +20,13 @@ describe('routing', () => {
     renderAt('/candlestick/macd')
     expect(screen.getByText(/未找到/)).toBeInTheDocument()
   })
+  it('/matrix 渲染适用性矩阵页', () => {
+    renderAt('/matrix')
+    expect(screen.getByText(/定性经验判断/)).toBeInTheDocument()
+    expect(screen.getAllByText('适用性矩阵').length).toBeGreaterThanOrEqual(1)
+    expect(screen.queryByText(/未找到/)).not.toBeInTheDocument()
+    expect(screen.queryByText(/页面不存在/)).not.toBeInTheDocument()
+  })
   it('完全未知路径显示 404', () => {
     renderAt('/totally/unknown/path')
     expect(screen.getByText(/页面不存在/)).toBeInTheDocument()

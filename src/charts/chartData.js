@@ -270,6 +270,46 @@ export const chartData = {
     ],
   },
 
+  // 平头顶：上涨高位，相邻两根高点齐平（先阳后阴），等高位为阻力
+  tweezer: {
+    candles: [
+      { o: 12, h: 13.5, l: 11.9, c: 13.3 },
+      { o: 13.3, h: 13.52, l: 12.4, c: 12.5 },
+    ],
+    annotations: [{ type: 'line', price: 13.5, label: '等高位(阻力)' }],
+  },
+  // 大阳大阴：一根光头光脚大阳(l≈o,h≈c)，一根光头光脚大阴(h≈o,l≈c)
+  marubozu: {
+    candles: [
+      { o: 10.1, h: 12.6, l: 10.05, c: 12.55 },
+      { o: 12.55, h: 12.6, l: 10.1, c: 10.15 },
+    ],
+    annotations: [
+      { type: 'highlight', index: 0 },
+      { type: 'highlight', index: 1 },
+    ],
+  },
+  // 上升三法：大阳 + 三小阴回调(不破大阳低) + 大阳创新高
+  'rising-falling-three': {
+    candles: [
+      { o: 10, h: 12.1, l: 9.9, c: 12 },
+      { o: 11.9, h: 12, l: 11.3, c: 11.4 },
+      { o: 11.4, h: 11.6, l: 10.9, c: 11 },
+      { o: 11, h: 11.2, l: 10.5, c: 10.7 },
+      { o: 10.8, h: 13, l: 10.7, c: 12.9 },
+    ],
+    annotations: [{ type: 'box', from: 1, to: 3, label: '小阴回调' }],
+  },
+  // 三内部上涨：大阴 + 内含小阳(孕线) + 放量大阳收盘升破前阴开盘
+  'three-inside': {
+    candles: [
+      { o: 13, h: 13.1, l: 11.4, c: 11.5 },
+      { o: 12, h: 12.6, l: 11.9, c: 12.5 },
+      { o: 12.4, h: 13.6, l: 12.3, c: 13.5 },
+    ],
+    annotations: [{ type: 'box', from: 0, to: 1, label: '孕线' }],
+  },
+
   // 矩形整理：在水平支撑与压力间往返，末端突破
   rectangle: {
     candles: fromPath([12, 13, 12.1, 12.9, 12.2, 13, 12.1, 13.5, 14]),

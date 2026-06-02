@@ -14,6 +14,7 @@ const ids = [
   'dark-cloud-cover', 'piercing-line', 'evening-star', 'harami',
   'shooting-star', 'hanging-man',
   'three-white-soldiers', 'three-black-crows', 'inverted-hammer', 'special-doji',
+  'tweezer', 'marubozu', 'rising-falling-three', 'three-inside',
   'rectangle', 'flag-wedge', 'gap', 'v-reversal',
   'false-breakout', 'trading-psychology', 'drawdown-ruin', 'a-share-risks',
 ]

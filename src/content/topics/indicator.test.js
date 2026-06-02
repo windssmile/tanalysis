@@ -25,4 +25,10 @@ describe('indicator topics', () => {
       expect(t.sections.metrics.length).toBeGreaterThan(0)
     }
   })
+  it('每个条目含 pitfalls(失效场景) 数组', () => {
+    for (const t of indicatorTopics) {
+      expect(Array.isArray(t.sections.pitfalls)).toBe(true)
+      expect(t.sections.pitfalls.length).toBeGreaterThan(0)
+    }
+  })
 })

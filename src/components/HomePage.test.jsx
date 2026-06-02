@@ -15,4 +15,9 @@ describe('HomePage', () => {
     expect(enabled).toHaveAttribute('href', '/candlestick')
     expect(screen.queryAllByText('敬请期待')).toHaveLength(0)
   })
+  it('渲染工具入口（适用性矩阵）', () => {
+    render(<MemoryRouter><HomePage /></MemoryRouter>)
+    const link = screen.getByText('适用性矩阵').closest('a')
+    expect(link).toHaveAttribute('href', '/matrix')
+  })
 })

@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { enabledCategories } from '../../content/categories.js'
+import { enabledTools } from '../../content/tools.js'
 import './layout.css'
 
 export default function Nav() {
   const [open, setOpen] = useState(false)
   const cats = enabledCategories()
+  const toolLinks = enabledTools()
   return (
     <nav className="nav">
       <Link to="/" className="nav-brand">
@@ -18,6 +20,12 @@ export default function Nav() {
           <NavLink key={c.id} to={`/${c.id}`} onClick={() => setOpen(false)}
             className={({ isActive }) => (isActive ? 'active' : '')}>
             {c.name}
+          </NavLink>
+        ))}
+        {toolLinks.map((t) => (
+          <NavLink key={t.id} to={t.path} onClick={() => setOpen(false)}
+            className={({ isActive }) => (isActive ? 'active' : '')}>
+            {t.name}
           </NavLink>
         ))}
       </div>

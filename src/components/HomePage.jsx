@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { categories } from '../content/categories.js'
 import { topicsByCategory } from '../content/topics/index.js'
+import { enabledTools } from '../content/tools.js'
 
 export default function HomePage() {
   const sorted = [...categories].sort((a, b) => a.order - b.order)
@@ -29,6 +30,21 @@ export default function HomePage() {
             ? <Link key={c.id} to={`/${c.id}`}>{card}</Link>
             : <div key={c.id}>{card}</div>
         })}
+      </div>
+      <h2 style={{ fontSize: 18, marginTop: 36 }}>工具</h2>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(220px,1fr))', gap: 16, marginTop: 12 }}>
+        {enabledTools().map((t) => (
+          <Link key={t.id} to={t.path}>
+            <div style={{
+              background: 'var(--surface)', border: '1px solid var(--border-strong)',
+              borderRadius: 'var(--radius)', padding: 18, height: '100%',
+            }}>
+              <div style={{ fontSize: 22 }}>{t.icon}</div>
+              <div style={{ fontWeight: 700, marginTop: 8 }}>{t.name}</div>
+              <div style={{ color: 'var(--text-mute)', fontSize: 12, marginTop: 4 }}>{t.desc}</div>
+            </div>
+          </Link>
+        ))}
       </div>
     </div>
   )

@@ -37,4 +37,5 @@
   display: flex; justify-content: space-between; gap: 10px; padding: 6px 10px; border-radius: 6px;
 }
 .nav-search-suggest li a:hover { background: var(--primary-soft); }
+.nav-search-suggest li.active a { background: var(--primary-soft); }
 .nav-search-kind { color: var(--text-mute); font-size: 12px; }

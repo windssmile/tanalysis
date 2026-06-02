@@ -152,7 +152,7 @@ src/
 
 ## 8. 当前进度（截至本文件）
 
-**8 大板块 / 49 条目 / 133 测试全绿 / 11 种自绘图表组件 / 1 个工具页（适用性矩阵）**
+**8 大板块 / 49 条目 / 153 测试全绿 / 11 种自绘图表组件 / 3 个工具页（适用性矩阵·术语速查·全站搜索）**
 
 | 板块 | id | 条目数 | 内容 |
 |---|---|---|---|
@@ -178,7 +178,7 @@ src/
 
 **工具页（独立于 8 大板块，注册表见 `src/content/tools.js`，Nav/首页自动生成入口）** —— 见 `docs/superpowers/specs/2026-06-02-partB-and-tools-design.md`：
 - **有效性矩阵（✅ 已完成 2026-06-02）**：`/matrix`，10 工具×3 市场状态(趋势/震荡/反转)的定性适用性对照表，中性色阶评级(故意不用红绿)+ 每格经验说明 + 免责横幅。数据 `src/content/effectiveness.js`，组件 `EffectivenessMatrix.jsx`。计划 `docs/superpowers/plans/2026-06-02-effectiveness-matrix.md`。
-- **术语速查 + 搜索（已设计，未实现）**：全站搜索 + curated 术语表（`/search`、`/glossary`）。
+- **术语速查 + 全站搜索（✅ 已完成 2026-06-02）**：顶栏常驻搜索框（实时下拉，条目+术语统一结果，回车进 `/search?q=`）；`/search` 结果页按术语/条目分组；`/glossary` 列出 16 个 curated 术语（定义+延伸条目链接）。纯函数搜索层 `src/search/index.js`（加权子串匹配 title>tags>subtitle>正文；术语并入索引），术语数据 `src/content/glossary.js`。组件 `SearchPage.jsx`/`GlossaryPage.jsx`/`layout/SearchBox.jsx`。计划 `docs/superpowers/plans/2026-06-02-search-glossary.md`。备注：术语结果点击跳转到其首个延伸条目（定义已在结果副标题内联展示）。
 - **playground（已设计，未实现）**：参数沙盘 + 信号回测引擎（纯函数引擎 + 可换数据源 + 诚实框架：方法演示标注/随机对照组/多市场情境），为日后接真实数据预留 `DataSource.load()` 接口。
 
 **接真实数据（大方向，待讨论）**

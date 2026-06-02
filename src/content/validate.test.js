@@ -5,7 +5,7 @@ import { hasChart } from '../charts/chartRegistry.js'
 import { getCategory } from './categories.js'
 
 describe('topics index', () => {
-  it('汇总 49 个条目', () => {
+  it('汇总 65 个条目', () => {
     expect(allTopics).toHaveLength(65)
   })
   it('getTopic 按 id 返回，未知返回 undefined', () => {

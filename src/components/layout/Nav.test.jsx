@@ -15,6 +15,7 @@ describe('Nav', () => {
     expect(screen.getByText('分时图分析')).toBeInTheDocument()
     expect(screen.getByText('实战框架')).toBeInTheDocument()
     expect(screen.getByText('适用性矩阵')).toBeInTheDocument()
+    expect(screen.getByRole('searchbox')).toBeInTheDocument()
   })
 })
 

@@ -22,3 +22,19 @@
 @media (max-width: 720px) {
   .topic-sidebar-wrap { display: none; }
 }
+.nav-search { position: relative; margin-left: auto; }
+.nav-search-input {
+  background: var(--surface-2); color: var(--text); border: 1px solid var(--border-strong);
+  border-radius: 20px; padding: 6px 14px; font-size: 13px; width: 180px; outline: none;
+}
+.nav-search-input:focus { border-color: var(--primary); }
+.nav-search-suggest {
+  position: absolute; top: 110%; right: 0; left: 0; z-index: 30; margin: 0; padding: 6px;
+  list-style: none; background: var(--surface); border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm); box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+.nav-search-suggest li a {
+  display: flex; justify-content: space-between; gap: 10px; padding: 6px 10px; border-radius: 6px;
+}
+.nav-search-suggest li a:hover { background: var(--primary-soft); }
+.nav-search-kind { color: var(--text-mute); font-size: 12px; }

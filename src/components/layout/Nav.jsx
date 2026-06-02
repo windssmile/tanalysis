@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { enabledCategories } from '../../content/categories.js'
 import { enabledTools } from '../../content/tools.js'
+import SearchBox from './SearchBox.jsx'
 import './layout.css'
 
 export default function Nav() {
@@ -29,6 +30,7 @@ export default function Nav() {
           </NavLink>
         ))}
       </div>
+      <SearchBox />
     </nav>
   )
 }

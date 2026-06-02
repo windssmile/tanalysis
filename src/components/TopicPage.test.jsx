@@ -1,7 +1,18 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { MemoryRouter, Routes, Route } from 'react-router-dom'
 import TopicPage from './TopicPage.jsx'
+import * as topicsModule from '../content/topics/index.js'
+
+// 让 getTopic 默认走真实实现，仅在需要时按调用覆盖返回值，
+// 这样其余依赖真实条目的用例不受影响。
+vi.mock('../content/topics/index.js', async (importOriginal) => {
+  const actual = await importOriginal()
+  return {
+    ...actual,
+    getTopic: vi.fn(actual.getTopic),
+  }
+})
 
 function renderAt(path) {
   return render(
@@ -40,13 +51,31 @@ describe('TopicPage', () => {
     renderAt('/candlestick/hammer')
     expect(screen.queryByText('量化视角')).not.toBeInTheDocument()
   })
-  it('无 pitfalls 字段的条目不渲染"何时会失效"', () => {
-    renderAt('/candlestick/hammer')
-    expect(screen.queryByText('何时会失效')).not.toBeInTheDocument()
-  })
   it('含 pitfalls 字段的条目渲染"何时会失效"', () => {
     renderAt('/risk/false-breakout')
     expect(screen.getByText('何时会失效')).toBeInTheDocument()
+  })
+  it('无 pitfalls 字段的条目不渲染"何时会失效"（使用 mock，不依赖真实内容）', () => {
+    const fakeTopic = {
+      id: 'fake',
+      category: 'candlestick',
+      title: '假条目',
+      subtitle: '仅用于测试',
+      tags: ['测试'],
+      chartId: undefined,
+      sections: {
+        meaning: '含义文本',
+        identify: ['识别要点一'],
+        usage: ['使用提示一'],
+        limitation: '局限文本',
+        // 故意不包含 pitfalls
+      },
+      related: [],
+    }
+    vi.mocked(topicsModule.getTopic).mockReturnValueOnce(fakeTopic)
+    renderAt('/candlestick/fake')
+    expect(screen.getByRole('heading', { name: '假条目' })).toBeInTheDocument()
+    expect(screen.queryByText('何时会失效')).not.toBeInTheDocument()
   })
   it('渲染延伸阅读链接', () => {
     renderAt('/candlestick/bullish-engulfing')

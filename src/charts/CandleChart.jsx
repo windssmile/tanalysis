@@ -98,6 +98,20 @@ export default function CandleChart({
           )
         })}
 
+      {/* 买卖点标注（买=红三角朝上在下方，卖=绿三角朝下在上方；红涨绿跌） */}
+      {annotations
+        .filter((a) => a.type === 'marker')
+        .map((a, i) => {
+          const c = laid[a.index]
+          if (!c) return null
+          const buy = a.dir === 'buy'
+          const color = buy ? UP : DOWN
+          const points = buy
+            ? `${c.x},${c.lowY + 4} ${c.x - 4},${c.lowY + 11} ${c.x + 4},${c.lowY + 11}`
+            : `${c.x},${c.highY - 4} ${c.x - 4},${c.highY - 11} ${c.x + 4},${c.highY - 11}`
+          return <polygon key={`marker-${i}`} data-role="marker" data-dir={a.dir} points={points} fill={color} />
+        })}
+
       {/* K线 */}
       {laid.map((c, i) => {
         const color = c.bullish ? UP : DOWN

@@ -7,6 +7,7 @@ import NotFound from './components/NotFound.jsx'
 import EffectivenessMatrix from './components/EffectivenessMatrix.jsx'
 import SearchPage from './components/SearchPage.jsx'
 import GlossaryPage from './components/GlossaryPage.jsx'
+import PlaygroundPage from './components/PlaygroundPage.jsx'
 
 export default function AppRoutes() {
   return (
@@ -16,6 +17,7 @@ export default function AppRoutes() {
         <Route path="/matrix" element={<EffectivenessMatrix />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/glossary" element={<GlossaryPage />} />
+        <Route path="/playground" element={<PlaygroundPage />} />
         <Route path="/:category" element={<CategoryPage />} />
         <Route path="/:category/:topic" element={<TopicPage />} />
         <Route path="*" element={<NotFound />} />

@@ -15,4 +15,9 @@ describe('tools 注册表', () => {
     expect(g).toBeTruthy()
     expect(g.path).toBe('/glossary')
   })
+  it('包含回测沙盘且 path 为 /playground', () => {
+    const p = tools.find((t) => t.id === 'playground')
+    expect(p).toBeTruthy()
+    expect(p.path).toBe('/playground')
+  })
 })

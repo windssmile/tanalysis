@@ -9,6 +9,7 @@ const ids = [
   'trend-line', 'support-resistance', 'dow-theory', 'quant-signals',
   'volume-price', 'volume-breakout', 'volume-divergence',
   'chip-distribution',
+  'volume-climax', 'turnover-rate', 'granville-volume', 'volume-price-combos',
   'multi-indicator-resonance', 'market-regime', 'multi-timeframe',
   'position-risk', 'trading-system',
   'dark-cloud-cover', 'piercing-line', 'evening-star', 'harami',

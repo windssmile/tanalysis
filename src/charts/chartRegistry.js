@@ -42,6 +42,10 @@ const registry = {
   'volume-breakout': priceVolume('volume-breakout'),
   'volume-divergence': priceVolume('volume-divergence'),
   'chip-distribution': { Component: ChipChart, props: { data: chartData['chip-distribution'].candles } },
+  'volume-climax': priceVolume('volume-climax'),
+  'turnover-rate': priceVolume('turnover-rate'),
+  'granville-volume': priceVolume('granville-volume'),
+  'volume-price-combos': priceVolume('volume-price-combos'),
   'multi-indicator-resonance': candle('multi-indicator-resonance'),
   'market-regime': candle('market-regime'),
   'multi-timeframe': {

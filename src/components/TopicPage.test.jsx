@@ -83,6 +83,10 @@ describe('TopicPage', () => {
     // 看跌吞没 可能出现在侧栏和延伸阅读中，用 getAllByText
     expect(screen.getAllByText('看跌吞没').length).toBeGreaterThanOrEqual(1)
   })
+  it('正文「含义」里的术语自动链到 /glossary', () => {
+    const { container } = renderAt('/volume/volume-breakout')
+    expect(container.querySelector('a[href="/glossary"]')).toBeInTheDocument()
+  })
   it('未知条目显示未找到', () => {
     renderAt('/candlestick/nope')
     expect(screen.getByText(/未找到/)).toBeInTheDocument()

@@ -3,6 +3,7 @@ import { getTopic } from '../content/topics/index.js'
 import { getCategory } from '../content/categories.js'
 import { getChart } from '../charts/chartRegistry.js'
 import TopicSidebar from './TopicSidebar.jsx'
+import GlossaryText from './GlossaryText.jsx'
 
 function Bullets({ items }) {
   return (
@@ -49,7 +50,7 @@ export default function TopicPage() {
       {/* 正文 */}
       <div style={{ marginTop: 18 }}>
         <SectionTitle>含义</SectionTitle>
-        <p style={{ color: '#cbd5e1', marginTop: 0 }}>{s.meaning}</p>
+        <p style={{ color: '#cbd5e1', marginTop: 0 }}><GlossaryText text={s.meaning} /></p>
 
         {s.formula && (<><SectionTitle>计算原理</SectionTitle><p style={{ color: '#cbd5e1' }}>{s.formula}</p></>)}
 

@@ -46,6 +46,10 @@ const registry = {
   'turnover-rate': priceVolume('turnover-rate'),
   'granville-volume': priceVolume('granville-volume'),
   'volume-price-combos': priceVolume('volume-price-combos'),
+  'volume-time-space': priceVolume('volume-time-space'),
+  'manipulation-volume': priceVolume('manipulation-volume'),
+  'volume-stacking': priceVolume('volume-stacking'),
+  'volume-top-bottom': priceVolume('volume-top-bottom'),
   'multi-indicator-resonance': candle('multi-indicator-resonance'),
   'market-regime': candle('market-regime'),
   'multi-timeframe': {

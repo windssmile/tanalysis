@@ -6,7 +6,7 @@ import { getCategory } from './categories.js'
 
 describe('topics index', () => {
   it('汇总 49 个条目', () => {
-    expect(allTopics).toHaveLength(61)
+    expect(allTopics).toHaveLength(65)
   })
   it('getTopic 按 id 返回，未知返回 undefined', () => {
     expect(getTopic('macd').title).toBe('MACD')
@@ -17,7 +17,7 @@ describe('topics index', () => {
     expect(topicsByCategory('indicator')).toHaveLength(8)
     expect(topicsByCategory('pattern')).toHaveLength(8)
     expect(topicsByCategory('theory')).toHaveLength(4)
-    expect(topicsByCategory('volume')).toHaveLength(8)
+    expect(topicsByCategory('volume')).toHaveLength(12)
     expect(topicsByCategory('intraday')).toHaveLength(4)
     expect(topicsByCategory('strategy')).toHaveLength(5)
     expect(topicsByCategory('risk')).toHaveLength(4)

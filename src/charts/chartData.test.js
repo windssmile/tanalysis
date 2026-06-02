@@ -10,6 +10,7 @@ const ids = [
   'volume-price', 'volume-breakout', 'volume-divergence',
   'chip-distribution',
   'volume-climax', 'turnover-rate', 'granville-volume', 'volume-price-combos',
+  'volume-time-space', 'manipulation-volume', 'volume-stacking', 'volume-top-bottom',
   'multi-indicator-resonance', 'market-regime', 'multi-timeframe',
   'position-risk', 'trading-system',
   'dark-cloud-cover', 'piercing-line', 'evening-star', 'harami',

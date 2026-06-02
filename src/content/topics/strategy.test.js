@@ -18,4 +18,10 @@ describe('strategy topics', () => {
       expect(Array.isArray(t.sections.quant)).toBe(true)
     }
   })
+  it('每个条目含 pitfalls(失效场景) 数组', () => {
+    for (const t of strategyTopics) {
+      expect(Array.isArray(t.sections.pitfalls)).toBe(true)
+      expect(t.sections.pitfalls.length).toBeGreaterThan(0)
+    }
+  })
 })
